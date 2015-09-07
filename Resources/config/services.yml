@@ -1,0 +1,7 @@
+services:
+  zimban.listener.security_hook_listener:
+    class: Zimtronic\BannerBundle\Event\SecurityHookListener
+    arguments:
+      - @service_container
+    tags:
+      - { name: kernel.event_subscriber }

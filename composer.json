@@ -1,0 +1,33 @@
+{
+	"name" : "zimtronic/bannerbundle",
+	"version" : "1.0.0-alpha",
+	"keywords" : [
+		"symfony",
+		"development",
+		"bundle",
+		"banner",
+        "ip",
+        "security",
+        "block"
+	],
+	"type" : "symfony-bundle",
+	"license" : "Zimtronic",
+	"authors" : [{
+			"name" : "Ariel Chávez",
+			"email" : "arielcxl@gmail.com"
+		}
+	],
+	"require" : {
+		"php" : ">=5.3",
+		"symfony/framework-bundle" : "2.*",
+		"symfony/symfony" : "2.*",
+		"doctrine/mongodb-odm" : "1.0.*@dev",
+		"doctrine/mongodb-odm-bundle" : "3.0.*@dev"
+	},
+	"autoload" : {
+		"psr-0" : {
+			"Zimtronic\\BannerBundle" : ""
+		}
+	},
+	"target-dir" : "Zimtronic/BannerBundle"
+}

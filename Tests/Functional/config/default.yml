@@ -1,0 +1,30 @@
+framework:
+    secret: test
+    test: ~
+    session:
+        storage_id: session.storage.filesystem
+    form:            true
+    csrf_protection: true
+    validation:
+        enabled: true
+        enable_annotations: true
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+    templating:
+        engines: [twig, php]
+
+twig:
+    debug:            %kernel.debug%
+    strict_variables: %kernel.debug%
+
+doctrine_mongodb:
+    connections:
+        default: 
+         server: mongodb://localhost:27017
+         options: {}
+    document_managers:
+        default:
+           auto_mapping: true
+    auto_generate_hydrator_classes: true
+ 
+
