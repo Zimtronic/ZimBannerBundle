@@ -128,7 +128,7 @@ class SecurityHookListener implements EventSubscriberInterface
 		$incident->setExpireAt($expiration);
 		$this->manager->persist($incident);
 		
-		$attempts = $this->manager->createQueryBuilder('SprocketBaseBundle:Security\Incident')
+		$attempts = $this->manager->createQueryBuilder('ZimtronicBannerBundle:Mongo\Incident')
 							->field('address')->equals($clientIp)
 							->count()->getQuery()->execute();
 		
@@ -153,7 +153,7 @@ class SecurityHookListener implements EventSubscriberInterface
 	 */
 	private function isRequestAllowedToProceed($request) {
 		$clientIp = $request->getClientIp();
-		$banned = $this->manager->createQueryBuilder('SprocketBaseBundle:Security\BannedAddress')
+		$banned = $this->manager->createQueryBuilder('ZimtronicBannerBundle:Mongo\BannedAddress')
 						 ->field('address')->equals($clientIp)
 						 ->count()->getQuery()->execute();
 		
