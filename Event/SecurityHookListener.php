@@ -119,7 +119,7 @@ class SecurityHookListener implements EventSubscriberInterface
 	private function registerSecurityIncident($request, $type, $info) {
 		$clientIp = $request->getClientIp();
 
-		$expiration = $this->getExpirationDate($this->incidentLifetime);
+		$expiration = $this->getExpirationDate($this->incidentLifeTime);
 		
 		$incident = new Incident();
 		$incident->setAddress($clientIp);
