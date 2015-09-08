@@ -27,12 +27,38 @@ class ZimtronicBannerExtension extends Extension
         $loader->load('services.yml');
         
         if (array_key_exists('incident', $config)) {
+        	
            $container->setParameter('zimban.incident.lifetime', $config['incident']['lifetime']);
+           
         }
         
         if (array_key_exists('banner', $config)) {
+        	
            $container->setParameter('zimban.banner.incidents_to_ban', $config['banner']['incidents_to_ban']);
            $container->setParameter('zimban.banner.ban_time_frame', $config['banner']['ban_time_frame']);
+           
         }
+        
+        if (array_key_exists('enabled', $config)) {
+           
+           if ($container->hasDefinition('zimban.listener.security_hook_listener')) {
+              
+           	  $definition = $container->getDefinition('zimban.listener.security_hook_listener');
+              
+              if (!$definition->hasTag('kernel.event_subscriber') && $config['enabled']) {
+                 $definition->addTag('kernel.event_subscriber', array());
+              }
+              
+              if (!($config['enabled'])) {
+              	
+                 $container->removeDefinition('zimban.listener.security_hook_listener');
+              	
+              }
+              
+           }
+           
+        }
+        
     }
+    
 }

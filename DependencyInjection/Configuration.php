@@ -40,6 +40,7 @@ class Configuration implements ConfigurationInterface
 						//->booleanNode("timewindow")->defaultValue()->end()
 					->end()
 				->end()
+				->scalarNode("enabled")->defaultValue(false)->end()
 			->end();
       
       return $treeBuilder;
